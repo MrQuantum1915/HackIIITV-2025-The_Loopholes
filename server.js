@@ -1,8 +1,8 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const { GoogleGenAI } = require("@google/genai"); // Import the new library
+const { GoogleGenAI } = require("@google/genai"); // new library
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config(); // Load API key from .env file
+require('dotenv').config(); // loading API key from .env file
 
 const app = express();
 const port = 3000;
