@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Roadmap Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar" id="sidebar">
+      <div class="logo">
+        <img src="https://via.placeholder.com/100x50?text=Logo" alt="Logo">
+      </div>
+      <ul>
+        <li class="active"><i class="fas fa-home"></i> Home (Dashboard)</li>
+        <li><i class="fas fa-road"></i> My Roadmap</li>
+        <li><i class="fas fa-calendar"></i> Planner</li>
+        <li>
+          <span><i class="fas fa-compass"></i> Explore</span>
+          <ul class="submenu">
+            <li><i class="fas fa-users"></i> Events & Clubs</li>
+            <li><i class="fas fa-chalkboard-teacher"></i> Mentors</li>
+          </ul>
+        </li>
+        <li><i class="fas fa-chart-line"></i> Progress</li>
+        <li>
+          <span><i class="fas fa-user"></i> Profile</span>
+          <ul class="submenu">
+            <li><i class="fas fa-edit"></i> Edit Profile</li>
+            <li><i class="fas fa-cog"></i> Settings</li>
+            <li><i class="fas fa-sign-out-alt"></i> Logout</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <div class="top-bar">
+         <div class="notification">New event added!</div> <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        <div class="search-icon"><i class="fas fa-search"></i></div>
+      </div>
+      <div class="fade-in">
+        <div class="header">
+          <h1 class="text-xl font-bold">Build Your Personalized Roadmap</h1>
+          <p class="text-sm mt-1 opacity-70">Tailored for your academic and career success</p>
+        </div>
+
+        <form id="roadmapForm">
+          <!-- Personal Information -->
+          <div class="mb-2">
+            <button type="button" class="section-btn w-full text-left">
+              <span>Personal Information</span>
+              <span>▼</span>
+            </button>
+            <div class="section-content">
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Full Name <span class="text-red-400">*</span></label>
+                <input type="text" name="fullName" required class="input-field" title="Enter your full name" placeholder="Enter your full name">
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Academic Year <span class="text-red-400">*</span></label>
+                <select name="academicYear" required class="select-field" title="Select your academic year">
+                  <option value="">Select...</option>
+                  <option value="Freshman">Freshman</option>
+                  <option value="Sophomore">Sophomore</option>
+                  <option value="Junior">Junior</option>
+                  <option value="Senior">Senior</option>
+                </select>
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Major</label>
+                <input type="text" name="major" value="Computer Science" disabled class="input-field" title="Your major is Computer Science">
+              </div>
+            </div>
+          </div>
+
+          <!-- Career Aspirations -->
+          <div class="mb-2">
+            <button type="button" class="section-btn w-full text-left">
+              <span>Career Aspirations</span>
+              <span>▼</span>
+            </button>
+            <div class="section-content">
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Preferred Career Path(s) <span class="text-red-400">*</span></label>
+                <input type="text" name="careerPath" required class="input-field" placeholder="e.g., Software Engineer, Data Scientist">
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Long-Term Professional Goals</label>
+                <textarea name="longTermGoals" class="textarea-field" rows="3" placeholder="e.g., Lead a tech startup"></textarea>
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Desired Industry/Sector</label>
+                <input type="text" name="industry" class="input-field" placeholder="e.g., Healthcare, Gaming">
+              </div>
+            </div>
+          </div>
+
+          <!-- Technical Skills Assessment -->
+          <div class="mb-2">
+            <button type="button" class="section-btn w-full text-left">
+              <span>Technical Skills Assessment</span>
+              <span>▼</span>
+            </button>
+            <div class="section-content">
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Programming Languages</label>
+                <div class="skill-input-container">
+                  <input type="text" id="skillInput" class="input-field" placeholder="e.g., Python">
+                  <button type="button" id="addSkill">Add</button>
+                </div>
+                <div id="skillsList" class="mt-2"></div>
+                <input type="hidden" name="programmingLanguages" id="skillsHidden">
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Tech Domains Explored</label>
+                <div class="skill-input-container">
+                  <input type="text" id="domainInput" class="input-field" placeholder="e.g., Web Development">
+                  <button type="button" id="addDomain">Add</button>
+                </div>
+                <div id="domainsList" class="mt-2"></div>
+                <input type="hidden" name="techDomains" id="domainsHidden">
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Frameworks Explored</label>
+                <div class="skill-input-container">
+                  <input type="text" id="frameworkInput" class="input-field" placeholder="e.g., React">
+                  <button type="button" id="addFramework">Add</button>
+                </div>
+                <div id="frameworksList" class="mt-2"></div>
+                <input type="hidden" name="frameworks" id="frameworksHidden">
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Proficiency Level</label>
+                <select name="proficiency" class="select-field" title="Select your proficiency level">
+                  <option value="">Select...</option>
+                  <option value="Beginner">Beginner</option>
+                  <option value="Intermediate">Intermediate</option>
+                  <option value="Advanced">Advanced</option>
+                </select>
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Certifications/Courses Completed</label>
+                <textarea name="certifications" class="textarea-field" rows="3" placeholder="e.g., AWS Certified Developer"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interests and Passions -->
+          <div class="mb-2">
+            <button type="button" class="section-btn w-full text-left">
+              <span>Interests and Passions</span>
+              <span>▼</span>
+            </button>
+            <div class="section-content">
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Subjects or Topics of Interest</label>
+                <input type="text" name="topicsInterest" class="input-field" placeholder="e.g., Machine Learning, Cybersecurity">
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Hobbies Related to Technology</label>
+                <input type="text" name="techHobbies" class="input-field" placeholder="e.g., Game Development, Robotics">
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Preferred Work Environment</label>
+                <select name="workEnvironment" class="select-field" title="Select your preferred work environment">
+                  <option value="">Select...</option>
+                  <option value="Independent">Independent</option>
+                  <option value="Team">Team</option>
+                  <option value="Hybrid">Hybrid</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Learning Preferences -->
+          <div class="mb-2">
+            <button type="button" class="section-btn w-full text-left">
+              <span>Learning Preferences</span>
+              <span>▼</span>
+            </button>
+            <div class="section-content">
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Preferred Learning Methods</label>
+                <input type="text" name="learningMethods" class="input-field" placeholder="e.g., Online Courses, Hands-on Projects">
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Time Availability for Learning</label>
+                <input type="text" name="timeAvailability" class="input-field" placeholder="e.g., 10 hours/week">
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Pace of Learning</label>
+                <select name="learningPace" class="select-field" title="Select your preferred learning pace">
+                  <option value="">Select...</option>
+                  <option value="Intensive">Intensive</option>
+                  <option value="Moderate">Moderate</option>
+                  <option value="Relaxed">Relaxed</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Challenges and Support -->
+          <div class="mb-2">
+            <button type="button" class="section-btn w-full text-left">
+              <span>Challenges and Support</span>
+              <span>▼</span>
+            </button>
+            <div class="section-content">
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Obstacles Faced in Learning</label>
+                <textarea name="obstacles" class="textarea-field" rows="3" placeholder="e.g., Time management"></textarea>
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium mb-1">Areas Needing Improvement</label>
+                <input type="text" name="improvementAreas" class="input-field" placeholder="e.g., Data Structures, Algorithms">
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <button type="submit" class="submit-btn">Generate Roadmap</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

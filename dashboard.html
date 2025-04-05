@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Hackathon Project</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Dashboard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="#" id="logoutBtn">Logout</a>
+    </nav>
+  </header>
+  <main>
+    <!-- Personalized Academic & Career Roadmap -->
+    <section id="roadmap">
+      <h2>Your Personalized Roadmap</h2>
+      <div id="roadmapContent">
+        <!-- Dynamic roadmap items will be loaded here -->
+      </div>
+    </section>
+
+    <!-- Integrated Daily Planner -->
+    <section id="planner">
+      <h2>Daily Planner</h2>
+      <div id="plannerContent">
+        <!-- Dynamic planner tasks will be loaded here -->
+      </div>
+      <form id="plannerForm">
+        <input type="text" id="taskInput" placeholder="Enter new task" required />
+        <button type="submit">Add Task</button>
+      </form>
+    </section>
+
+    <!-- GenAI Recommended Articles -->
+    <section id="genai">
+      <h2>Recommended Articles</h2>
+      <div id="genaiContent">
+        <!-- Dynamic GenAI recommended articles will be loaded here -->
+      </div>
+      <form id="genaiForm">
+        <input type="text" id="searchInput" placeholder="Search for resources" />
+        <button type="submit">Search</button>
+      </form>
+    </section>
+
+    <!-- Mentor Connect -->
+    <section id="mentor">
+      <h2>Mentor Connect</h2>
+      <div id="mentorContent">
+        <div class="mentor">
+          <p><strong>John Doe</strong> - Senior, Computer Science</p>
+          <button>Connect</button>
+        </div>
+        <div class="mentor">
+          <p><strong>Jane Smith</strong> - Alumni, Software Engineer</p>
+          <button>Connect</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Hackathon Project</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
